@@ -1,0 +1,88 @@
+.CommanContainer {
+  margin: 2% 1%;
+}
+.comman {
+  background-color: #ecf0f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 85px;
+  height: 100%;
+}
+
+/* .ProductDetails */
+.ProductDetails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 120px;
+  height: 75vh;
+}
+.ProductDetails__image {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ProductDetails__image img {
+  width: 300px;
+}
+.ProductDetails__details {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 5%;
+}
+.ProductDetails__details h2,
+h5 {
+  margin-bottom: 3%;
+  font-size: 25px;
+}
+.ProductDetails__details p {
+  font-size: 20px;
+  margin-bottom: 3%;
+}
+.ProductDetails__details button {
+  border: none;
+  padding: 9px 10px;
+  border-radius: 4px;
+  font-size: 20px;
+  width: 50%;
+  cursor: pointer;
+  background-color: #44bd32;
+}
+
+/* Cart */
+.Cart {
+  margin-top: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Cart table {
+  border-collapse: collapse;
+}
+.Cart thead {
+  background-color: #ecf0f1;
+}
+.Cart td {
+  border: 1px solid rgb(145, 145, 145);
+  text-align: center;
+  padding: 10px 0px;
+}
+.Cart table tbody img {
+  width: 60px;
+}
+.Cart table tbody h6 button {
+  background: none;
+  border: none;
+  background-color: #ecf0f1;
+  padding: 0px 11px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px 4px;
+}
