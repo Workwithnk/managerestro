@@ -13,7 +13,6 @@ function Cart() {
     finalVal += data.price;
   });
 
-  console.log("cartArr", cartArr);
   return (
     <div className="Cart">
       <table width="90%">

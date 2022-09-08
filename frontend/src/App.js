@@ -27,6 +27,8 @@ const productListStyle = {
 
 export const ProductContext = createContext();
 
+const isUserLockedIn = true;
+
 function App() {
   const [data, setData] = useState([]);
   const fetchFackData = () => {
@@ -40,40 +42,44 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <ProductContext.Provider value={data}>
-        <Provider store={store}>
-          <div className="App">
-            <div
-              className="App__header"
-              style={{
-                position: "fixed",
-                top: "0px",
-                background: "#fff",
-                width: "100%",
-                borderBottom: "1px solid rgba(0,0,0,0.2)",
-              }}
-            >
-              <h2 style={h2Style}>Products</h2>
+      {isUserLockedIn ? (
+        <ProductContext.Provider value={data}>
+          <Provider store={store}>
+            <div className="App">
+              <div
+                className="App__header"
+                style={{
+                  position: "fixed",
+                  top: "0px",
+                  background: "#fff",
+                  width: "100%",
+                  borderBottom: "1px solid rgba(0,0,0,0.2)",
+                }}
+              >
+                <h2 style={h2Style}>Products</h2>
 
-              <Categories />
+                <Categories />
+              </div>
+              <>
+                {data.length === 0 ? (
+                  <LoadingPage />
+                ) : (
+                  <Routes>
+                    <Route path="/" element={<AllData />} />
+                    <Route path="/clothing" element={<Clothing />} />
+                    <Route path="/jewelery" element={<Jewelery />} />
+                    <Route path="/electronics" element={<Electronics />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/product/:id" element={<ProductDetails />} />
+                  </Routes>
+                )}
+              </>
             </div>
-            <>
-              {data.length === 0 ? (
-                <LoadingPage />
-              ) : (
-                <Routes>
-                  <Route path="/" element={<AllData />} />
-                  <Route path="/clothing" element={<Clothing />} />
-                  <Route path="/jewelery" element={<Jewelery />} />
-                  <Route path="/electronics" element={<Electronics />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/product/:id" element={<ProductDetails />} />
-                </Routes>
-              )}
-            </>
-          </div>
-        </Provider>
-      </ProductContext.Provider>
+          </Provider>
+        </ProductContext.Provider>
+      ) : (
+        <h1>Login</h1>
+      )}
     </BrowserRouter>
   );
 }

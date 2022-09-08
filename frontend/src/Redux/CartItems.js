@@ -37,10 +37,6 @@ const CartItems = createSlice({
           return (data.price = price);
         });
     },
-    // deleteProduct: (state, action) => {
-    //   console.log();
-    //   state = state.filter((data) => data.id !== action.payload);
-    // },
   },
 });
 export const {

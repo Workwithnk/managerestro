@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
@@ -37,28 +37,61 @@ const countOfCart = {
 };
 
 function Categories() {
+  const location = useLocation();
   const cartItems = useSelector((state) => state.CartItems);
 
   return (
     <ul className="categories" style={categoriesUlStyle}>
       <li style={categoriesLiStyle}>
         <NavLink style={categoriesLinkStyle} to="/">
-          All Product
+          <p
+            style={
+              location.pathname === "/"
+                ? { borderBottom: "2px solid #000" }
+                : { borderBottom: "2px solid #fff" }
+            }
+          >
+            All Product
+          </p>
         </NavLink>
       </li>
       <li style={categoriesLiStyle}>
         <NavLink style={categoriesLinkStyle} to="/clothing">
-          Clothings
+          <p
+            style={
+              location.pathname === "/clothing"
+                ? { borderBottom: "2px solid #000" }
+                : { borderBottom: "2px solid #fff" }
+            }
+          >
+            Clothings
+          </p>
         </NavLink>
       </li>
       <li style={categoriesLiStyle}>
         <NavLink style={categoriesLinkStyle} to="/jewelery">
-          Jewelery
+          <p
+            style={
+              location.pathname === "/jewelery"
+                ? { borderBottom: "2px solid #000" }
+                : { borderBottom: "2px solid #fff" }
+            }
+          >
+            Jewelery
+          </p>
         </NavLink>
       </li>
       <li style={categoriesLiStyle}>
         <NavLink style={categoriesLinkStyle} to="/electronics">
-          Electronics
+          <p
+            style={
+              location.pathname === "/electronics"
+                ? { borderBottom: "2px solid #000" }
+                : { borderBottom: "2px solid #fff" }
+            }
+          >
+            Electronics
+          </p>
         </NavLink>
       </li>
       <li style={categoriesLiStyle}>

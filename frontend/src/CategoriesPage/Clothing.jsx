@@ -12,7 +12,6 @@ function Clothing() {
       data.category === "men's clothing" || data.category === "women's clothing"
   );
 
-  // console.log("clothdata", filteredData);
   return (
     <div className="clothing comman">
       {filteredData.map((data) => {

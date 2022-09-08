@@ -10,7 +10,7 @@ function ProductDetails() {
   const dispatch = useDispatch();
   const [disable, setDisable] = useState(false);
   const data = useSelector((state) => state.CartItems);
-  console.log("title from redux", data);
+
   const getProduct = useContext(ProductContext);
   const { id } = useSelector((state) => state.SelectedProduct);
 
