@@ -6,13 +6,14 @@ import AllData from "./CategoriesPage/AllData";
 import Clothing from "./CategoriesPage/Clothing";
 import Jewelery from "./CategoriesPage/Jewelery";
 import Electronics from "./CategoriesPage/Electronics";
-
 import "./App.css";
 import Cart from "./CategoriesPage/Cart";
 import ProductDetails from "./ProductDetails";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import LoadingPage from "./LoadingPage";
+import SignIn from "./CategoriesPage/signin/SingIn";
+
 const h2Style = {
   textAlign: "center",
   margin: "10px 0px",
@@ -27,7 +28,7 @@ const productListStyle = {
 
 export const ProductContext = createContext();
 
-const isUserLockedIn = true;
+const isUserLockedIn = false;
 
 function App() {
   const [data, setData] = useState([]);
@@ -78,7 +79,7 @@ function App() {
           </Provider>
         </ProductContext.Provider>
       ) : (
-        <h1>Login</h1>
+        <SignIn />
       )}
     </BrowserRouter>
   );
