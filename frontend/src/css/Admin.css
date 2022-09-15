@@ -1,0 +1,13 @@
+.Admin {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mainContLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 29rem;
+  height: 60vh;
+}

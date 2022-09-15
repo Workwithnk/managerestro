@@ -1,33 +1,32 @@
 const mongoose = require("mongoose");
 
-const registerSchema = new mongoose.Schema({
-  name: {
+const recipeSchema = new mongoose.Schema({
+  title: {
     type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
     required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
-  isAdmin: {
-    type: Boolean,
-    required: true,
-  },
-  token: {
-    type: String,
-    required: true,
   },
 });
 
-const registerModel = mongoose.model("register", registerSchema);
+const recipeModel = mongoose.model("item", recipeSchema);
 
-module.exports = registerModel;
+module.exports = recipeModel;

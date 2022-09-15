@@ -21,7 +21,6 @@ const CartItems = createSlice({
         .forEach((data) => (data.count -= 1));
     },
     totalPrice: (state, action) => {
-      console.log("totalPrice", action.payload);
       state
         .filter((data) => data.id === action.payload.id)
         .forEach((data) => {

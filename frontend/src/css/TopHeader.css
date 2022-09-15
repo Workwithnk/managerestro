@@ -1,0 +1,39 @@
+.TopHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5rem;
+  margin-bottom: 1rem;
+}
+
+.headingCont__topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #000;
+}
+.headingCont__topHeader h3 {
+  margin-bottom: -4px;
+  font-family: sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.logo__topHeader {
+  font-size: 26px;
+  margin-right: 5px;
+}
+
+.loginBtn {
+  font-size: 16px;
+  background: #3bff9a99;
+  border-radius: 5px;
+  padding: 4px 15px;
+  cursor: pointer;
+  border: none;
+  margin: 0px 0px 0px 10px;
+}
+.loginBtn:hover {
+  background: #3bff9a;
+}

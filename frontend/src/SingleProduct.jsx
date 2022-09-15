@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { setId } from "./Redux/SelectedProduct";
 import "./css/SingleData.css";
 
-function SingleProduct({ id, title, price, description, image, rating }) {
+function SingleProduct({ id, title, price, description, image }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const handleSingleProduct = () => {
-    setProduct({ id, title, price, description, image, rating });
+    setProduct({ id, title, price, description, image });
     navigate(`/product/${id}`);
     dispatch(setId(id));
   };

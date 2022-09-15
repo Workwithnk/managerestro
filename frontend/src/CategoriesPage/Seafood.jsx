@@ -3,28 +3,26 @@ import { ProductContext } from "../App";
 import SingleProduct from "../SingleProduct";
 import "../css/comman.css";
 
-function Jewelery() {
-  let getData = useContext(ProductContext);
+function Seafood() {
+  const getProduct = useContext(ProductContext);
 
-  let myArr = [...getData];
-
-  let filteredJwelary = myArr.filter((data) => data.category === "jewelery");
+  let dataArr = [...getProduct];
+  let filteredData = dataArr.filter((data) => data.category === "Seafood");
 
   return (
-    <div className="Electronics comman">
-      {filteredJwelary.map((data) => {
+    <div className="clothing comman">
+      {filteredData.map((data) => {
         return (
-          <div key={data.id} className="CommanContainer">
-            {filteredJwelary.length === 0 ? (
+          <div key={data._id} className="CommanContainer">
+            {filteredData.length === 0 ? (
               "Loading..."
             ) : (
               <SingleProduct
                 title={data.title}
-                id={data.id}
+                id={data._id}
                 price={data.price}
                 description={data.description}
                 image={data.image}
-                rating={data.rating.rate}
               />
             )}
           </div>
@@ -34,4 +32,4 @@ function Jewelery() {
   );
 }
 
-export default Jewelery;
+export default Seafood;

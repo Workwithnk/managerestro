@@ -7,7 +7,7 @@ const categoriesUlStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-around",
-  marginBottom: "10px",
+  marginBottom: "-3px",
 };
 const categoriesLiStyle = {
   listStyle: "none",
@@ -48,49 +48,49 @@ function Categories() {
             style={
               location.pathname === "/"
                 ? { borderBottom: "2px solid #000" }
-                : { borderBottom: "2px solid #fff" }
+                : { borderBottom: "none" }
             }
           >
-            All Product
+            All food
           </p>
         </NavLink>
       </li>
       <li style={categoriesLiStyle}>
-        <NavLink style={categoriesLinkStyle} to="/clothing">
+        <NavLink style={categoriesLinkStyle} to="/Seafood">
           <p
             style={
-              location.pathname === "/clothing"
+              location.pathname === "/Seafood"
                 ? { borderBottom: "2px solid #000" }
-                : { borderBottom: "2px solid #fff" }
+                : { borderBottom: "none" }
             }
           >
-            Clothings
+            Seafood
           </p>
         </NavLink>
       </li>
       <li style={categoriesLiStyle}>
-        <NavLink style={categoriesLinkStyle} to="/jewelery">
+        <NavLink style={categoriesLinkStyle} to="/Chicken">
           <p
             style={
-              location.pathname === "/jewelery"
+              location.pathname === "/Chicken"
                 ? { borderBottom: "2px solid #000" }
-                : { borderBottom: "2px solid #fff" }
+                : { borderBottom: "none" }
             }
           >
-            Jewelery
+            Chicken
           </p>
         </NavLink>
       </li>
       <li style={categoriesLiStyle}>
-        <NavLink style={categoriesLinkStyle} to="/electronics">
+        <NavLink style={categoriesLinkStyle} to="/Vegetarian">
           <p
             style={
-              location.pathname === "/electronics"
+              location.pathname === "/Vegetarian"
                 ? { borderBottom: "2px solid #000" }
-                : { borderBottom: "2px solid #fff" }
+                : { borderBottom: "none" }
             }
           >
-            Electronics
+            Vegetarian
           </p>
         </NavLink>
       </li>

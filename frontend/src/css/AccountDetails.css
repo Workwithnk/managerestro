@@ -1,0 +1,32 @@
+.Account {
+  margin-top: 8rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.mainContAccount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 17rem;
+}
+
+.commanInpCont__Account {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.commanInpTitle__Account {
+  margin: 10px 0px 10px 10px;
+  font-family: sans-serif;
+  border: none;
+  outline: none;
+}
+.passCont__Account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eyeIcon {
+  cursor: pointer;
+}

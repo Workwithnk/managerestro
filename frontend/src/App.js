@@ -1,50 +1,68 @@
 import React, { createContext, useEffect, useState } from "react";
-import { BrowserRouter, NavLink } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Categories from "./Categories";
 import { Route, Routes } from "react-router-dom";
 import AllData from "./CategoriesPage/AllData";
-import Clothing from "./CategoriesPage/Clothing";
-import Jewelery from "./CategoriesPage/Jewelery";
-import Electronics from "./CategoriesPage/Electronics";
-import "./App.css";
 import Cart from "./CategoriesPage/Cart";
 import ProductDetails from "./ProductDetails";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import LoadingPage from "./LoadingPage";
-import SignIn from "./CategoriesPage/signin/SingIn";
-
-const h2Style = {
-  textAlign: "center",
-  margin: "10px 0px",
-};
-
-const productListStyle = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexWrap: "wrap",
-};
+import Login from "./CategoriesPage/signin/Login";
+import Register from "./CategoriesPage/signin/Register";
+import TopHeader from "./TopHeader";
+import Vegetarian from "./CategoriesPage/Vegetarian";
+import Seafood from "./CategoriesPage/Seafood";
+import Chicken from "./CategoriesPage/Chicken";
+import AddItem from "./admin/AddItem";
+import Account from "./Account";
+import "./App.css";
+import PageNotFound from "./PageNotFound";
 
 export const ProductContext = createContext();
-
-const isUserLockedIn = false;
-
+export const UserDetailsContext = createContext();
 function App() {
   const [data, setData] = useState([]);
-  const fetchFackData = () => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setData(json));
+  const [loggedUser, setLoggedUser] = useState({});
+  const [currLoggedUser, setCurrLoggedUser] = useState({});
+  const handleUserDetail = (details) => {
+    setLoggedUser(details);
   };
 
+  const handleFoodData = async () => {
+    const res = await fetch("http://localhost:5000/additem");
+    const result = await res.json();
+    setData(result.foodData);
+  };
+
+  const getLoggedUser = async () => {
+    const res = await fetch("http://localhost:5000/loggeduser", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ token: window.localStorage.getItem("userToken") }),
+    });
+    const result = await res.json();
+    setCurrLoggedUser(result.loggedUser);
+  };
+  const token = window.localStorage.getItem("userToken");
+
   useEffect(() => {
-    fetchFackData();
+    Object.keys(loggedUser).length > 0 &&
+      window.localStorage.setItem("userToken", loggedUser.token);
+    getLoggedUser();
+  }, [loggedUser]);
+
+  useEffect(() => {
+    handleFoodData();
   }, []);
+
   return (
     <BrowserRouter>
-      {isUserLockedIn ? (
-        <ProductContext.Provider value={data}>
+      <ProductContext.Provider value={data}>
+        <UserDetailsContext.Provider value={currLoggedUser}>
           <Provider store={store}>
             <div className="App">
               <div
@@ -57,8 +75,7 @@ function App() {
                   borderBottom: "1px solid rgba(0,0,0,0.2)",
                 }}
               >
-                <h2 style={h2Style}>Products</h2>
-
+                <TopHeader getLoggedUser={getLoggedUser} />
                 <Categories />
               </div>
               <>
@@ -66,21 +83,48 @@ function App() {
                   <LoadingPage />
                 ) : (
                   <Routes>
-                    <Route path="/" element={<AllData />} />
-                    <Route path="/clothing" element={<Clothing />} />
-                    <Route path="/jewelery" element={<Jewelery />} />
-                    <Route path="/electronics" element={<Electronics />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/product/:id" element={<ProductDetails />} />
+                    <Route exact path="/" element={<AllData />} />
+                    <Route exact path="/Seafood" element={<Seafood />} />
+                    <Route exact path="/Chicken" element={<Chicken />} />
+                    <Route exact path="/Vegetarian" element={<Vegetarian />} />
+                    <Route exact path="/cart" element={<Cart />} />
+                    <Route
+                      exact
+                      path="/product/:id"
+                      element={<ProductDetails />}
+                    />
+                    {(token?.length === 0 || token === null) && (
+                      <>
+                        <Route
+                          exact
+                          path="/register"
+                          element={
+                            <Register handleUserDetail={handleUserDetail} />
+                          }
+                        />
+                        <Route
+                          exact
+                          path="/login"
+                          element={
+                            <Login handleUserDetail={handleUserDetail} />
+                          }
+                        />
+                      </>
+                    )}
+                    {window.localStorage.getItem("userToken") !== null && (
+                      <>
+                        <Route exact path="/myaccount" element={<Account />} />
+                        <Route exact path="/addItem" element={<AddItem />} />
+                      </>
+                    )}
+                    <Route path="*" element={<PageNotFound />} />
                   </Routes>
                 )}
               </>
             </div>
           </Provider>
-        </ProductContext.Provider>
-      ) : (
-        <SignIn />
-      )}
+        </UserDetailsContext.Provider>
+      </ProductContext.Provider>
     </BrowserRouter>
   );
 }

@@ -3,15 +3,19 @@ import { ProductContext } from "../App";
 import SingleProduct from "../SingleProduct";
 import "../css/comman.css";
 
-function AllData() {
-  let getAllData = useContext(ProductContext);
+function Chicken() {
+  let getData = useContext(ProductContext);
+
+  let myArr = [...getData];
+
+  let filteredJwelary = myArr.filter((data) => data.category === "Chicken");
 
   return (
-    <div className="AllData comman">
-      {getAllData.map((data) => {
+    <div className="Electronics comman">
+      {filteredJwelary.map((data) => {
         return (
           <div key={data._id} className="CommanContainer">
-            {getAllData.length === 0 ? (
+            {filteredJwelary.length === 0 ? (
               "Loading..."
             ) : (
               <SingleProduct
@@ -29,4 +33,4 @@ function AllData() {
   );
 }
 
-export default AllData;
+export default Chicken;

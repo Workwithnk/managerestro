@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductContext } from "./App";
-import StarRatingComponent from "react-star-rating-component";
-import { AiFillStar } from "react-icons/ai";
 import { addToCart } from "./Redux/CartItems";
 import "./css/comman.css";
 
@@ -14,7 +12,7 @@ function ProductDetails() {
   const getProduct = useContext(ProductContext);
   const { id } = useSelector((state) => state.SelectedProduct);
 
-  const filteredProduct = [...getProduct].filter((data) => data.id === id);
+  const filteredProduct = [...getProduct].filter((data) => data._id === id);
 
   const handleClick = (id, title, image, price) => {
     dispatch(
@@ -34,11 +32,12 @@ function ProductDetails() {
       {filteredProduct.map((data) => {
         return (
           <div
-            key={data.id}
+            key={data._id}
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              width: "100%",
             }}
           >
             <div className="ProductDetails__image">
@@ -46,17 +45,7 @@ function ProductDetails() {
             </div>
             <div className="ProductDetails__details">
               <h2>{data.title}</h2>
-              {/* <span>Rating : 3.9</span> */}
-              <StarRatingComponent
-                name="rate2"
-                renderStarIcon={() => (
-                  <span>
-                    <AiFillStar />
-                  </span>
-                )}
-                starCount={10}
-                value={data.rating.rate}
-              />
+
               <h5 style={{ marginTop: "2%" }}>{data.price}$</h5>
               <p>{data.category}</p>
               <p>{data.description}</p>
@@ -68,7 +57,7 @@ function ProductDetails() {
                     : { backgroundColor: "#44bd32", cursor: "pointer" }
                 }
                 onClick={() =>
-                  handleClick(data.id, data.title, data.image, data.price)
+                  handleClick(data._id, data.title, data.image, data.price)
                 }
               >
                 Add to cart

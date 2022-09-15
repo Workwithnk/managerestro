@@ -2,13 +2,14 @@
   margin: 2% 1%;
 }
 .comman {
-  background-color: #ecf0f1;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 85px;
+  margin-top: 68px;
   height: 100%;
+  /* padding: 2% 0%; */
+  margin-top: 6rem;
 }
 
 /* .ProductDetails */
@@ -26,7 +27,9 @@
   justify-content: center;
 }
 .ProductDetails__image img {
-  width: 300px;
+  width: 27rem;
+  height: 20rem;
+  object-fit: contain;
 }
 .ProductDetails__details {
   width: 50%;
@@ -53,14 +56,16 @@ h5 {
   width: 50%;
   cursor: pointer;
   background-color: #44bd32;
+  color: #fff;
 }
 
 /* Cart */
 .Cart {
-  margin-top: 105px;
+  margin-top: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .Cart table {
   border-collapse: collapse;
@@ -74,7 +79,8 @@ h5 {
   padding: 10px 0px;
 }
 .Cart table tbody img {
-  width: 60px;
+  width: 180px;
+  object-fit: contain;
 }
 .Cart table tbody h6 button {
   background: none;
@@ -85,4 +91,26 @@ h5 {
   border-radius: 5px;
   cursor: pointer;
   margin: 0px 4px;
+}
+
+.btnCont {
+  width: 88%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem 0rem;
+}
+.btn {
+  padding: 6px 16px;
+  border-radius: 5px;
+  background: none;
+  outline: none;
+  border: none;
+  background: #4cd137;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+.btn:hover {
+  box-shadow: 1px 2px 3px 2px #b9b9b982;
 }
