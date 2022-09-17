@@ -14,7 +14,7 @@ function Login({ handleUserDetail }) {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/login", {
+    fetch(`${process.env.REACT_APP_BASE_API_URL}/login`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

@@ -17,7 +17,7 @@ function Register({ handleUserDetail }) {
     const { name, password, email, phone } = userDetails;
     axios({
       method: "POST",
-      url: "http://localhost:5000/register",
+      url: `${process.env.REACT_APP_BASE_API_URL}/register`,
       data: {
         name,
         password,
