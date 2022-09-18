@@ -4,10 +4,6 @@ const recipeModel = require("../schema/RecipeSchema");
 const registerModel = require("../schema/RegisterSchema");
 const GenerateToken = require("../utils/GenerateToken");
 
-routes.get("/", (req, res) => {
-  res.json({ message: "Home page" });
-});
-
 routes.post("/login", async (req, res) => {
   let { email, password } = req.body;
   try {
