@@ -30,25 +30,22 @@ function App() {
   };
 
   const handleFoodData = async () => {
-    const res = await fetch(`${process.env.REACT_APP_BASE_API_URL}/additem`);
+    const res = await fetch("/additem");
     const result = await res.json();
     setData(result.foodData);
   };
 
   const getLoggedUser = async () => {
-    const res = await fetch(
-      `${process.env.REACT_APP_BASE_API_URL}/loggeduser`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          token: window.localStorage.getItem("userToken"),
-        }),
-      }
-    );
+    const res = await fetch("loggeduser", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        token: window.localStorage.getItem("userToken"),
+      }),
+    });
     const result = await res.json();
     setCurrLoggedUser(result.loggedUser);
   };

@@ -21,7 +21,7 @@ function AddItem() {
   const handleAddItem = (e) => {
     e.preventDefault();
 
-    axios(`${process.env.REACT_APP_BASE_API_URL}/additem`, {
+    axios("additem", {
       method: "POST",
       headers: {
         "Content-type": "Application/json",
