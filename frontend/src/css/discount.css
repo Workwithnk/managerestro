@@ -1,0 +1,29 @@
+.discountCont {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discount {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.firstCard {
+  width: 17rem;
+}
+.secondCard {
+  width: 17rem;
+}
+.image__discount {
+  width: 6rem;
+}
+.comman__disc {
+  background-color: #f1c40f;
+  padding: 10px 20px;
+  border-radius: 15%;
+  width: fit-content;
+  cursor: pointer;
+}

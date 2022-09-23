@@ -25,6 +25,10 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  discount : {
+    type:String,
+    required:true
+  },
 });
 
 const recipeModel = mongoose.model("item", recipeSchema);

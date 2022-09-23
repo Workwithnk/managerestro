@@ -31,8 +31,8 @@ function Register({ handleUserDetail }) {
           handleUserDetail(res.data.message);
           setUserDetails({});
           navigate("/");
-        } else {
-          alert("User is already registered!!");
+        } else if (res?.message === null) {
+          alert("Invalid credentials");
         }
       })
       .catch((e) => {

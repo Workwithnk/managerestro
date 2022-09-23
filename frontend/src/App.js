@@ -18,6 +18,8 @@ import AddItem from "./admin/AddItem";
 import Account from "./Account";
 import "./App.css";
 import PageNotFound from "./PageNotFound";
+import Discount from "./Discount";
+import DiscountedItem from "./DiscountedItem";
 
 export const ProductContext = createContext();
 export const UserDetailsContext = createContext();
@@ -34,9 +36,8 @@ function App() {
     const result = await res.json();
     setData(result.foodData);
   };
-
   const getLoggedUser = async () => {
-    const res = await fetch("loggeduser", {
+    const res = await fetch("/loggeduser", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -70,7 +71,7 @@ function App() {
               <div
                 className="App__header"
                 style={{
-                  position: "fixed",
+                  position: "sticky",
                   top: "0px",
                   background: "#fff",
                   width: "100%",
@@ -80,6 +81,7 @@ function App() {
                 <TopHeader getLoggedUser={getLoggedUser} />
                 <Categories />
               </div>
+
               <>
                 {data.length === 0 ? (
                   <LoadingPage />
@@ -119,6 +121,7 @@ function App() {
                         <Route exact path="/addItem" element={<AddItem />} />
                       </>
                     )}
+                    <Route path="/discount/:id" element={<DiscountedItem />} />
                     <Route path="*" element={<PageNotFound />} />
                   </Routes>
                 )}

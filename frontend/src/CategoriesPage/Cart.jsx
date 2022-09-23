@@ -28,6 +28,7 @@ function Cart() {
       alert(`please add some items @${user?.name}`);
       navigation("/");
     } else {
+      window.location.reload(true);
       alert(`Hurray your order is accepted!! Thankyou @${user?.name}`);
     }
   };

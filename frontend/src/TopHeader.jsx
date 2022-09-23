@@ -1,6 +1,6 @@
 import React from "react";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./css/TopHeader.css";
 import { useContext } from "react";
 import { UserDetailsContext } from "./App";
@@ -8,7 +8,7 @@ import { UserDetailsContext } from "./App";
 function TopHeader({ getLoggedUser }) {
   let user = useContext(UserDetailsContext);
   let localStorageData = window.localStorage.getItem("userToken");
-
+  const location = useLocation();
   const naviget = useNavigate();
   const handleLogOut = () => {
     window.localStorage.removeItem("userToken");
@@ -25,12 +25,30 @@ function TopHeader({ getLoggedUser }) {
       <div className="navLinks">
         {user?.isAdmin === true && (
           <Link to="/addItem">
-            <button className="loginBtn">addItem</button>
+            <button
+              className="loginBtn"
+              style={
+                location.pathname === "/addItem"
+                  ? { color: "#fff", background: "#1abc9c" }
+                  : { color: "#000", background: "#efefef" }
+              }
+            >
+              addItem
+            </button>
           </Link>
         )}
         {user?.email?.length > 0 && (
           <Link to="/myaccount">
-            <button className="loginBtn">account</button>
+            <button
+              className="loginBtn"
+              style={
+                location.pathname === "/myaccount"
+                  ? { color: "#fff", background: "#1abc9c" }
+                  : { color: "#000", background: "#efefef" }
+              }
+            >
+              account
+            </button>
           </Link>
         )}
         {localStorageData?.length > 0 ? (
@@ -39,7 +57,16 @@ function TopHeader({ getLoggedUser }) {
           </button>
         ) : (
           <Link to="/login">
-            <button className="loginBtn"> Login</button>
+            <button
+              className="loginBtn"
+              style={
+                location.pathname === "/login"
+                  ? { color: "#fff", background: "#1abc9c" }
+                  : { color: "#000", background: "#efefef" }
+              }
+            >
+              Login
+            </button>
           </Link>
         )}
       </div>

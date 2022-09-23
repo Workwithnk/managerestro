@@ -16,12 +16,13 @@ function AddItem() {
     price: 0,
     title: "",
     email: userContext?.email,
+    discount: 0,
   });
 
   const handleAddItem = (e) => {
     e.preventDefault();
 
-    axios("additem", {
+    axios("/additem", {
       method: "POST",
       headers: {
         "Content-type": "Application/json",
@@ -34,6 +35,7 @@ function AddItem() {
         price: itemDetails.price,
         title: itemDetails.title,
         email: itemDetails.email,
+        discount: itemDetails.discount,
       }),
     })
       .then((res) => res.json)
@@ -64,6 +66,7 @@ function AddItem() {
             }
             alt="title"
             name="title"
+            placeholder="chicken masala"
             className="input_Login"
           />
         </div>
@@ -77,6 +80,7 @@ function AddItem() {
             }
             alt="image"
             name="image"
+            placeholder="https://images..."
             className="input_Login"
           />
         </div>
@@ -90,6 +94,7 @@ function AddItem() {
             }
             alt="price"
             name="price"
+            placeholder="200$"
             className="input_Login"
           />
         </div>
@@ -100,11 +105,29 @@ function AddItem() {
             onChange={(e) =>
               setItemDetails({ ...itemDetails, category: e.target.value })
             }
+            placeholder="Chicken"
             className="input_Login"
           >
             <option value="Seafood">Seafood</option>
             <option value="Chicken">Chicken</option>
             <option value="Vegetarian">Vegetarian</option>
+          </select>
+        </div>
+        <div className="commanInpCont__Login">
+          <p className="commanInpTitle__Login">Discount</p>
+          <select
+            value={itemDetails.discount}
+            onChange={(e) =>
+              setItemDetails({ ...itemDetails, discount: e.target.value })
+            }
+            className="input_Login"
+          >
+            <option value="0">0 %</option>
+            <option value="10">10 %</option>
+            <option value="20">20 %</option>
+            <option value="50">50 %</option>
+            <option value="60">60 %</option>
+            <option value="80">80 %</option>
           </select>
         </div>
         <div className="commanInpCont__Login">
@@ -117,6 +140,7 @@ function AddItem() {
             }
             alt="description"
             name="description"
+            placeholder="A flavourful and easy chicken recipe, perfect for occasions like dinner..."
             className="input_Login"
           />
         </div>
